@@ -4,24 +4,15 @@ import { ImPencil2 } from 'react-icons/im';
 import { RxHamburgerMenu } from 'react-icons/rx';
 import Dropdown from './Dropdown';
 import { login, logout, onUserStateChange } from '../api/firebase';
+import User from './User';
 
 export default function Navbar() {
     const [view, setView] = useState(false); 
     const [user, setUser] = useState();
 
     useEffect(()=> {
-        onUserStateChange((user) => {
-            console.log(user);
-            setUser(user);
-        });
+        onUserStateChange(setUser);
     }, [])
-    
-    const handleLogin = () => {
-        login().then(setUser);
-    }
-    const handleLogout = () => {
-        logout().then(setUser);
-    }
 
     return (
         <header className='flex justify-between flex-row'>
@@ -39,8 +30,9 @@ export default function Navbar() {
                 <Link to='/products/new' className='text-xl'>
                     <ImPencil2 />
                 </Link>
-                {!user && <button onClick={handleLogin}>Login</button>}
-                {user && <button onClick={handleLogout}>Logout</button>}
+                {user && <User user={user}/>}
+                {!user && <button onClick={login}>Login</button>}
+                {user && <button onClick={logout}>Logout</button>}
             </nav>
         </header>
     );
