@@ -16,6 +16,7 @@ export default function NewProduct() {
             return;
         }
         setProduct((product) => ({...product, [name]: value }));
+        
     };
     const handleSubmit = (e) => {
         e.preventDefault();
