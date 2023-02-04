@@ -1,19 +1,17 @@
 import React from 'react';
-import { useQuery } from 'react-query';
-import { getCart } from '../api/firebase';
 import CartItem from '../components/CartItem';
-import { useAuthContext } from '../context/AuthContext';
 import { FiPlus } from 'react-icons/fi'
 import { TbEqual } from 'react-icons/tb'
 import PriceCard from '../components/PriceCard';
 import Button from '../components/ui/Button';
+import useCart from '../hooks/useCart';
 
 const SHIPPING = 3000;
 
 export default function MyCart() {
-    const { uid } = useAuthContext();
-    const { isLoading,
-            data: products } = useQuery(['carts'], () => getCart(uid));
+    const { 
+        cartQuery: {isLoading, data: products},
+    } = useCart(); 
     
     if(isLoading) return <p> Loading... </p>;
 
@@ -27,7 +25,7 @@ export default function MyCart() {
             {hasProducts && 
             <>
                 <ul className='border-b boerder-gray-300 mb-8 p-4 px-8'>
-                    {products && products.map((product) => <CartItem key={product.id} product={product} uid={uid} /> )}
+                    {products && products.map((product) => <CartItem key={product.id} product={product} /> )}
                 </ul>
                 <div className='flex justify-between items-center mb-6 px-2 md:px-8 lg:px-16'>
                     <PriceCard text='총 상품 금액' price={totalPrice} />

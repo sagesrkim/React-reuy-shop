@@ -5,7 +5,7 @@ import { useAuthContext } from '../context/AuthContext';
 export default function Dropdown() {
     const { user, login, logout } = useAuthContext();
     return (
-        <div className='flex flex-col my-5'>
+        <div className='flex flex-col justify-center items-center my-5 p-2'>
             <Link className='mb-2' to='/products'>NEW</Link>
             <Link to='/products'>ALL</Link>
             <Link to='/products'>Outer</Link>

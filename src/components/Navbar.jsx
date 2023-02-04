@@ -13,13 +13,13 @@ export default function Navbar() {
     const { user, login, logout } = useAuthContext();
     return (
         <header className='flex justify-between flex-row relative'>
-            <ul className='text-xl' onClick={() => {setView(!view)}}>
+            <ul className='text-xl text-center' onClick={() => {setView(!view)}}>
                 <RxHamburgerMenu />
 	            {view && <Dropdown />}
             </ul>
             
-            <Link className='flex items-center text-5xl p-2' to='/'>
-                <h1 className=''>R E U Y</h1>
+            <Link className='flex items-center text-2xl p-2' to='/'>
+                <h1>R E U Y</h1>
             </Link>
             <nav className='flex items-center gap-4 font-semibold'>
                 <Link to='/products'>ALL</Link>
