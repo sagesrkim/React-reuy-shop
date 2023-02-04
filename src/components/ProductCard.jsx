@@ -10,8 +10,8 @@ export default function ProductCard({
         <li 
             onClick={() => {navigate(`/products/${id}`, {state: { product }});
         }}
-            className='overflow-hidden cursor-pointer'>
-            <img className='w-full transition-all hover:translate-y-2' src={image} alt={title} />
+            className='cursor-pointer transition-all hover:translate-y-2'>
+            <img className='w-full h-2/3' src={image} alt={title} />
             <div className='mt-2 px-2 text-md flex justify-between items-center'>
                 <h3 className='truncate'>{title}</h3>
                 <p>{`₩${price}`}</p>

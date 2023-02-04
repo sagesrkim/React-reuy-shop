@@ -7,7 +7,7 @@ export default function Products() {
     const { isLoading, 
             error, 
             data: products
-        } = useQuery(['products'], () => getProducts());
+        } = useQuery(['products'], () => getProducts(), {staleTime: 1000 * 60});
     return (
         <>
             {isLoading && <p>Loading...</p>}
