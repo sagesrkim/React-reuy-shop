@@ -1,70 +1,78 @@
-# Getting Started with Create React App
+# Shopping mall R E U Y
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+쇼핑몰 기능 웹사이트 프로젝트 입니다.
 
-## Available Scripts
+## 소개
 
-In the project directory, you can run:
+#### start
 
-### `npm start`
+```
+npm install
+npm start
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+#### 개발 일자 : 01/02/2023 ~ 08/02/2023
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+#### 사용한 기술 스택
 
-### `npm test`
+- react
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- react Query
 
-### `npm run build`
+- tailwind CSS
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 구현 기능
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+#### 1. 로그인 / 로그아웃
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- firebase의 initializeapp, googleAuthProvider로 앱을 초기화한 후, Authentication 기능 중 web 구글 로그인 기능을 사용하여 signInWithPopup 함수를 생성하여 로그인 기능을 만들었습니다.
 
-### `npm run eject`
+- user의 상태를 관리하는 useState를 사용하여 로그인 권한을 확인하면 로그아웃 버튼을 띄웠습니다.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- onAuthStateChanged함수를 사용하여 로그인된 사용자의 정보를 보관하였고, useEffect를 사용하여 무분별한 리렌더링을 방지함과 동시에 페이지 리로딩 시에도 사용자 정보를 저장할 수 있도록 구현하였습니다.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- 비즈니스 로직과 UI 기능을 분리하여 작성하였습니다.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+#### 2. 어드민 사용자 권한과 경로 보호
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- 사용자를 어드민 배열에 있는지 확인하는 함수를 만들어서 uid가 어드민인 경우에만 제품 등록 아이콘을 보여주었습니다. database에서 admin 사용자를 가져오는 함수를 만들어 사용했습니다.
 
-## Learn More
+- 받아온 user의 객체에 isAdmin 속성을 추가하도록 만들었습니다. isAdmin이 true인 경우에 제품 등록 페이지에 접근하고, false라면 홈으로 리다이렉팅하도록 구현하였습니다.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- url에 직접 경로를 입력하여 접근할 경우를 대비해 권한을 확인하는 컴포넌트로 감싸서 권한을 확인한 후 이동할 수 있도록 경로를 보호하였습니다.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+#### 3. 새 제품 등록
 
-### Code Splitting
+- form 태그를 사용하여 등록한 이미지를 cloudinary에 등록하여 url을 생성한 후, fetch API로 제품을 등록하는 함수를 구현했습니다.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- uuid를 사용하여 고유한 아이디에 새제품을 등록하는 함수를 만들고 firebase에 데이터를 추가하도록 만들었습니다.
 
-### Analyzing the Bundle Size
+- 등록 버튼 클릭하고 성공적으로 데이터가 전달되면 완료 메시지를 띄우도록 구현했습니다.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+#### 4. 제품 보여주기
 
-### Making a Progressive Web App
+- useQuery를 사용하여 제품의 정보를 가져와 map 메서드를 활용하여 목록을 보여주었습니다.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- url을 동적으로 라우팅하고 제품의 데이터를 전달하여 상세페이지를 구현하였습니다.
 
-### Advanced Configuration
+#### 5. 장바구니 추가 기능
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- firebase에서 제품을 읽어오고 추가하고 삭제하는 함수를 생성하였고, 제품을 장바구니에 추가하면 상품 객체 정보를 데이터로 받는 함수를 구현했습니다.
+- reduce 메서드를 사용하여 장바구니 제품의 가격을 더하여 수량과 총 금액을 보여주도록 구현하였습니다.
 
-### Deployment
+## 보완점
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+- 로그인 기능을 firebase로 해결하다보니 인증 인가에 대해서 편리하게 다루어진 것 같아 로그인 과정에 대해 따로 공부하는 것이 필요하다고 생각했습니다.
+- 메뉴 모달을 사용하는 기능을 추가로 구현하는 중에 있습니다.
 
-### `npm run build` fails to minify
+## 파일 구조
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```
+📦 src
+┣ 📂 api
+┣ 📂 components
+┃ ┣ 📂 ui
+┣ 📂 context
+┣ 📂 hooks
+┣ 📂 pages
+```
