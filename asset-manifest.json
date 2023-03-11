@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/React-reuy-shop/static/css/main.6b6bcd7d.css",
+    "main.js": "/React-reuy-shop/static/js/main.13e5b607.js",
+    "static/js/787.7fdb6206.chunk.js": "/React-reuy-shop/static/js/787.7fdb6206.chunk.js",
+    "index.html": "/React-reuy-shop/index.html",
+    "main.6b6bcd7d.css.map": "/React-reuy-shop/static/css/main.6b6bcd7d.css.map",
+    "main.13e5b607.js.map": "/React-reuy-shop/static/js/main.13e5b607.js.map",
+    "787.7fdb6206.chunk.js.map": "/React-reuy-shop/static/js/787.7fdb6206.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6b6bcd7d.css",
+    "static/js/main.13e5b607.js"
+  ]
+}
