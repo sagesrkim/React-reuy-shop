@@ -24,8 +24,7 @@ npm start
 ## 구현 기능
 
 #### 1. 로그인 / 로그아웃
-
-![로그인로그아웃](https://user-images.githubusercontent.com/108039645/223312758-24fe54d5-91c3-45df-85a2-c1467e46ecf8.gif)
+![르이 로그인 로그아웃](https://github.com/sagesrkim/React-reuy-shop/assets/108039645/2c48d65a-b808-4eab-b1fb-37acbc07c0f4)
 
 - firebase의 initializeapp, googleAuthProvider로 앱을 초기화한 후, Authentication 기능 중 web 구글 로그인 기능을 사용하여 signInWithPopup 함수를 생성하여 로그인 기능을 만들었습니다.
 
@@ -36,7 +35,7 @@ npm start
 - 비즈니스 로직과 UI 기능을 분리하여 작성하였습니다.
 
 #### 2. 어드민 사용자 권한과 경로 보호
-![경로보호](https://user-images.githubusercontent.com/108039645/223313031-8635f337-93b0-4740-bb98-c3205c7d86cc.gif)
+![경로보호](https://github.com/sagesrkim/React-reuy-shop/assets/108039645/b40d7535-5154-4adb-8f96-bfdbfed2bb56)
 
 - 사용자를 어드민 배열에 있는지 확인하는 함수를 만들어서 uid가 어드민인 경우에만 제품 등록 아이콘을 보여주었습니다. database에서 admin 사용자를 가져오는 함수를 만들어 사용했습니다.
 
@@ -45,7 +44,7 @@ npm start
 - url에 직접 경로를 입력하여 접근할 경우를 대비해 권한을 확인하는 컴포넌트로 감싸서 권한을 확인한 후 이동할 수 있도록 경로를 보호하였습니다.
 
 #### 3. 새 제품 등록
-![제품등록](https://user-images.githubusercontent.com/108039645/223313149-d8144d15-80bc-4d12-a808-21ae8d6590d7.gif)
+![새제품등록](https://github.com/sagesrkim/React-reuy-shop/assets/108039645/e4d9a52e-8b94-4152-8f5f-2653e1b23ee6)
 
 - form 태그를 사용하여 등록한 이미지를 cloudinary에 등록하여 url을 생성한 후, fetch API로 제품을 등록하는 함수를 구현했습니다.
 
@@ -60,7 +59,7 @@ npm start
 - url을 동적으로 라우팅하고 제품의 데이터를 전달하여 상세페이지를 구현하였습니다.
 
 #### 5. 장바구니 추가 기능
-![장바구니에 추가](https://user-images.githubusercontent.com/108039645/223312705-826b7434-37d0-4b8f-a644-858c34ab1789.gif)
+![장바구니](https://github.com/sagesrkim/React-reuy-shop/assets/108039645/054828b3-a199-43d8-9cd7-3143e04b5e10)
 
 - firebase에서 제품을 읽어오고 추가하고 삭제하는 함수를 생성하였고, 제품을 장바구니에 추가하면 상품 객체 정보를 데이터로 받는 함수를 구현했습니다.
 - reduce 메서드를 사용하여 장바구니 제품의 가격을 더하여 수량과 총 금액을 보여주도록 구현하였습니다.
